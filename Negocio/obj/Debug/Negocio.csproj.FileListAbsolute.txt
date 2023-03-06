@@ -1,0 +1,77 @@
+D:\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.dll
+D:\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.pdb
+D:\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.dll
+D:\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.dll
+D:\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.pdb
+D:\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.pdb
+D:\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+D:\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+D:\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+D:\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.dll
+D:\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.pdb
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.dll
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.pdb
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.dll
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.dll
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.pdb
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.pdb
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.dll
+C:\Users\usuario\Desktop\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.dll
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.dll
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.dll
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.pdb
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.pdb
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.dll
+C:\Users\Usuario\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Dao.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\bin\Debug\Entidades.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesorios\TodoAccesorios\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\bin\Debug\Negocio.dll
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\bin\Debug\Dao.dll
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\bin\Debug\Entidades.dll
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\bin\Debug\Dao.pdb
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\bin\Debug\Entidades.pdb
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\obj\Debug\Negocio.dll
+C:\Users\Roman\Desktop\Carpetas\Proyectos\git\TodoAccesorios\Negocio\obj\Debug\Negocio.pdb
+D:\TodoAccesoriosFINAL\Negocio\bin\Debug\Negocio.dll
+D:\TodoAccesoriosFINAL\Negocio\bin\Debug\Negocio.pdb
+D:\TodoAccesoriosFINAL\Negocio\bin\Debug\Dao.dll
+D:\TodoAccesoriosFINAL\Negocio\bin\Debug\Entidades.dll
+D:\TodoAccesoriosFINAL\Negocio\bin\Debug\Dao.pdb
+D:\TodoAccesoriosFINAL\Negocio\bin\Debug\Entidades.pdb
+D:\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+D:\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+D:\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+D:\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.dll
+D:\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\bin\Debug\Negocio.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\bin\Debug\Dao.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\bin\Debug\Entidades.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\bin\Debug\Dao.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\bin\Debug\Entidades.pdb
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.dll
+C:\Users\Lucas Fernandez\Documents\GitHub\TodoAccesoriosFINAL\Negocio\obj\Debug\Negocio.pdb
