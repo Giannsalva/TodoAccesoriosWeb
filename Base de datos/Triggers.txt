@@ -1,0 +1,280 @@
+CREATE TRIGGER BajaStock
+ON Detalle_Ventas
+AFTER INSERT
+AS
+
+BEGIN
+	DECLARE @IdArt char(8), @Stock int
+	SET @IdArt = (SELECT IdArt_Detalle FROM inserted)
+	SET @Stock = (SELECT Cantidad_Detalle FROM inserted)
+
+	UPDATE Articulos
+	SET Stock_Art = Stock_Art - @Stock
+	WHERE Id_Art = @IdArt
+END
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+CREATE TRIGGER AumentarTotalVenta
+ON Detalle_Ventas
+AFTER INSERT
+AS
+
+BEGIN
+	DECLARE @Precio decimal, @Cantidad int, @NroVenta int
+	SET @Precio = (SELECT PrecioArt_Detalle FROM inserted)
+	SET @Cantidad = (SELECT Cantidad_Detalle FROM inserted)
+	SET @NroVenta = (SELECT NroVent_Detalle FROM INSERTED)
+
+	UPDATE Ventas
+	SET Total_Vent += @Precio * @Cantidad
+	WHERE Nro_Vent = @NroVenta
+END
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Create Trigger Tr_Estado_Art
+on Articulos
+AFTER UPDATE
+AS
+IF UPDATE(Estado_Art)
+BEGIN
+INSERT INTO Historial_Estado_Articulos(Id_Art_HE,Fecha_HE,Estado_HE)
+SELECT Id_Art,GETDATE(),Estado_Art
+FROM INSERTED
+END
+ GO
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Create Trigger [dbo].[Tr_Log_Venta]
+on [dbo].[Ventas]
+AFTER UPDATE
+AS
+IF UPDATE(Nro_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Nro de Venta'
+			FROM INSERTED
+	END
+IF UPDATE(DniUsuario_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod DNI'
+			FROM INSERTED
+	END
+IF UPDATE(IdTipoEnvio_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Tipo de envio'
+			FROM INSERTED
+	END
+IF UPDATE(IdLoc_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod de Local de venta'
+			FROM INSERTED
+	END
+IF UPDATE(IdTipoPago_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod tipo de pago'
+			FROM INSERTED
+	END
+IF UPDATE(Usuario_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod usuario'
+			FROM INSERTED
+	END
+IF UPDATE(EmailUsuario_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Email'
+			FROM INSERTED
+	END
+IF UPDATE(DireccionUs_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Direccion'
+			FROM INSERTED
+	END
+IF UPDATE(TelefonoUsuario_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Telefono'
+			FROM INSERTED
+	END
+IF UPDATE(Total_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Total'
+			FROM INSERTED
+	END
+IF UPDATE(Fecha_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Fecha'
+			FROM INSERTED
+	END
+IF UPDATE(Nombre_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Nombre'
+			FROM INSERTED
+	END
+IF UPDATE(Apellido_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Apellido'
+			FROM INSERTED
+	END
+IF UPDATE(Departamento_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Departamento'
+			FROM INSERTED
+	END
+IF UPDATE(Barrio_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Barrio'
+			FROM INSERTED
+	END
+IF UPDATE(CodPostal_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Cod Postal'
+			FROM INSERTED
+	END
+	GO
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+create trigger [dbo].[Tr_Insert_Venta]
+  on [dbo].[Ventas]
+  for insert
+  as
+ IF UPDATE(Nro_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Id_Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Alta de Venta'
+		FROM INSERTED
+	end
+  GO
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Create Trigger [dbo].[Tr_Log_Art]
+on [dbo].[Articulos]
+AFTER UPDATE
+AS
+IF UPDATE(Estado_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod Estado'
+			FROM INSERTED
+	END
+IF UPDATE(Nombre_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod Nombre'
+			FROM INSERTED
+	END
+IF UPDATE(Descripcion_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod Desc'
+			FROM INSERTED
+	END
+IF UPDATE(IdCat_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod IdCat'
+			FROM INSERTED
+	END
+IF UPDATE(IdMat_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod IdMat'
+			FROM INSERTED
+	END
+IF UPDATE(UrlImagen_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod URL'
+			FROM INSERTED
+	END
+IF UPDATE(PrecioUnitario_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod Precio'
+			FROM INSERTED
+	END
+IF UPDATE(FechaIngreso_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod Fecha Ingreso'
+			FROM INSERTED
+	END
+IF UPDATE(Stock_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Stock_Art,GETDATE(),'Mod Stock'
+			FROM INSERTED
+	END
+IF UPDATE(Id_Art)
+	BEGIN
+			INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+			SELECT Id_Art,GETDATE(),'Mod Stock'
+			FROM INSERTED
+	END
+GO
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+create trigger [dbo].[Tr_Insert_Art]
+  on [dbo].[Articulos]
+  for insert
+  as
+ IF UPDATE(Estado_Art)
+	BEGIN
+	INSERT INTO Log_Articulos(Id_Art_LA,Fecha_LA,Motivo_LA)
+	SELECT Id_Art,GETDATE(),'Alta Articulo'
+		FROM INSERTED
+	end
+  GO
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Create Trigger [dbo].[Tr_Mod_Venta]
+on [dbo].[Ventas]
+AFTER UPDATE
+AS
+IF UPDATE(DniUsuario_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod DNI'
+			FROM INSERTED
+	END
+IF UPDATE(IdTipoEnvio_Vent)
+	BEGIN
+			INSERT INTO Log_Ventas(Nro_Vent_LV,Fecha_LV,Motivo_LV)
+			SELECT Nro_Vent,GETDATE(),'Mod Tipo Envio'
+			FROM INSERTED
+	END
+GO
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+create trigger [dbo].[Tr_Insert_User]
+  on [dbo].[Usuarios]
+  for insert
+  as
+ IF UPDATE(DNI_Us)
+	BEGIN
+	INSERT INTO Log_Usuarios(DNI_LU,Fecha_LU,Motivo_LU)
+	SELECT DNI_Us,GETDATE(),'Alta Usuario'
+		FROM INSERTED
+	end
+  GO

@@ -1,0 +1,167 @@
+CREATE PROCEDURE SPEliminarArticulo
+(
+	@ID char(8)  
+)
+
+AS
+UPDATE Articulos SET Estado_Art = 0 WHERE Id_Art = @ID
+GO
+
+CREATE PROCEDURE SPEliminarUsuario
+(
+	@DNI char(8) 	
+)
+
+AS
+UPDATE Usuarios SET Estado = 0 WHERE DNI_Us = @DNI
+GO
+
+CREATE PROCEDURE SPActualizarArticulo
+(
+	@ID char(8),
+	@IDCAT char(8),
+	@IDMAT char(8),
+	@NOMBRE varchar(20),
+	@DESCRIPCION varchar(100),
+	@URL varchar(60),
+	@STOCK int,
+        @FECHA date,
+	@PRECIO decimal,
+        @ESTADO bit
+	)
+
+AS
+	UPDATE Articulos
+	SET
+        Id_Art=@ID,
+	IdCat_Art=@IDCAT,
+	IdMat_Art=@IDMAT,
+	Nombre_Art=@NOMBRE,
+	Descripcion_Art=@DESCRIPCION,
+	UrlImagen_Art=@URL,
+	Stock_Art=@STOCK,
+        FechaIngreso_Art=@FECHA,
+	PrecioUnitario_Art=@PRECIO,
+        Estado_Art=@ESTADO
+	WHERE Id_Art=@ID
+GO
+
+CREATE PROCEDURE SPActualizarUsuario
+(
+	@DNI char(8),
+	@USUARIO varchar(30),
+	@EMAIL varchar(60),
+	@PROV char(8),
+	@LOC char(8),
+	@DOMICILIO varchar(40),
+	@DEPTO varchar(10),
+	@CONTRASEÑA varchar(30),
+	@TELEFONO char(10),
+	@NOMBRE char(30),
+	@APELLIDO char(30),
+	@URL varchar(60),
+	@FECHANAC date,
+        @TIPO int,
+        @ESTADO bit
+	)
+
+AS
+	UPDATE Usuarios
+	SET
+	DNI_Us=@DNI,
+	Usuario_Us=@USUARIO,
+	Email_Us=@EMAIL,
+	IdProv_Us=@PROV,
+	IdLoc_Us=@LOC,
+	Domicilio_Us=@DOMICILIO,
+	Departamento_Us=@DEPTO,
+	Contraseña_Us=@CONTRASEÑA,
+	Telefono_Us=@TELEFONO,
+	Nombre_Us=@NOMBRE,
+	Apellido_Us=@APELLIDO,
+	UrlImagen_Us=@URL,
+	FechaNac_Us=@FECHANAC,
+        Tipo_Us=@TIPO,
+        Estado=@ESTADO
+	WHERE DNI_Us=@DNI
+GO
+
+CREATE PROCEDURE SPAgregarArticulo
+(
+	@ID char(8),
+	@IDCAT char(8),
+	@IDMAT char(8),
+	@NOMBRE varchar(20),
+	@DESCRIPCION varchar(100),
+	@URL varchar(60),
+	@STOCK int,
+	@FECHA date,
+	@PRECIO decimal,
+	@ESTADO bit = 1
+	)
+AS
+    INSERT INTO Articulos(Id_Art,IdCat_Art,IdMat_Art,Nombre_Art, Descripcion_Art,UrlImagen_Art,Stock_Art,FechaIngreso_Art,PrecioUnitario_Art,Estado_Art) VALUES(@ID,@IDCAT,@IDMAT,@NOMBRE,@DESCRIPCION,@URL,@STOCK,@FECHA,@PRECIO,@ESTADO)
+    GO
+
+CREATE PROCEDURE SPAgregarUsuario
+(
+	@DNI char(8),
+	@USUARIO varchar(30),
+	@EMAIL varchar(60),
+	@PROV char(8),
+	@LOC char(8),
+	@DOMICILIO varchar(40),
+	@CONTRASEÑA varchar(30),
+	@TELEFONO char(10),
+	@NOMBRE char(30),
+	@APELLIDO char(30),
+	@FECHANAC date
+	)
+AS
+    INSERT INTO Usuarios(DNI_Us,Usuario_Us,Email_Us,IdProv_Us,IdLoc_Us,Domicilio_Us,Contraseña_Us,Telefono_Us,Nombre_Us,Apellido_Us,FechaNac_Us) 
+	VALUES(@DNI,@USUARIO,@EMAIL,@PROV,@LOC,@DOMICILIO,@CONTRASEÑA,@TELEFONO,@NOMBRE,@APELLIDO,@FECHANAC)
+    GO
+
+CREATE PROCEDURE SPAgregarVenta
+(
+		@DniUsuario char(8),
+        @IdTipoEnvio char(8),
+        @IdLoc char(8),
+        @IdProvLoc char(8),
+        @IdTipoPago char(8),
+        @Usuario varchar(30),
+        @EmailUsuario varchar(40),
+        @DireccionUs varchar(60),
+        @TelefonoUsuario char(10),
+        @Total decimal,
+        @Fecha date,
+        @Nombre varchar (60),
+        @Apellido varchar (60),
+        @Departamento varchar (60),
+        @Barrio varchar (60),
+        @CodPostal int
+)
+AS
+INSERT INTO Ventas (DniUsuario_Vent ,IdTipoEnvio_Vent,IdLoc_Vent,IdProvLoc_Vent ,IdTipoPago_Vent ,Usuario_Vent ,EmailUsuario_Vent ,DireccionUs_Vent ,
+TelefonoUsuario_Vent,Total_Vent ,Fecha_Vent ,Nombre_Vent ,Apellido_Vent ,Departamento_Vent ,Barrio_Vent ,CodPostal_Vent)
+
+VALUES(@DniUsuario ,@IdTipoEnvio, @IdLoc, @IdProvLoc, @IdTipoPago, @Usuario, @EmailUsuario, @DireccionUs,
+@TelefonoUsuario, @Total, @Fecha, @Nombre, @Apellido, @Departamento, @Barrio,@CodPostal)
+GO
+
+
+
+
+
+CREATE PROCEDURE SPAgregarDetalleVenta
+(
+	@NroVent int,
+	@IdArt char(8),
+	@Cantidad  int,
+	@PrecioArt decimal
+)
+AS
+INSERT INTO Detalle_Ventas (NroVent_Detalle, IdArt_Detalle, Cantidad_Detalle, PrecioArt_Detalle)
+
+VALUES (@NroVent,@IdArt,@Cantidad,@PrecioArt)
+GO

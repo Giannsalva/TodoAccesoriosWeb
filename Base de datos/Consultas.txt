@@ -1,0 +1,60 @@
+--Cantidad de articulos con el stock por debajo de una cantidad específica
+SELECT COUNT(Id_Art) AS 'Cantidad de artículos'
+FROM Articulos
+WHERE Stock_Art < 2
+GO
+
+--El nombre y apellido de los usuarios de determinada provincia que hayan comprado determinado artículo
+SELECT Nombre_Us, Apellido_Us
+FROM Usuarios INNER JOIN Ventas ON DNI_Us=DniUsuario_Vent
+	INNER JOIN Detalle_Ventas ON Nro_Vent = NroVent_Detalle
+		INNER JOIN Articulos ON Id_Art = IdArt_Detalle
+		WHERE IdProv_Us = '1' AND IdCat_Art = '5'
+
+
+--La categoría de artículos mas vendida en una determinada localidad
+
+SELECT TOP(1) Descripcion_Cat, COUNT (IdArt_Detalle) AS [Articulos vendidos]
+FROM Detalle_Ventas INNER JOIN  Articulos ON Id_Art=IdArt_Detalle
+		INNER JOIN Categorias ON Id_Cat = IdCat_Art
+			INNER JOIN Ventas ON  Nro_Vent = NroVent_Detalle
+			WHERE IdLoc_Vent = 2
+			GROUP BY Descripcion_Cat
+			ORDER BY [Articulos vendidos] DESC
+
+-- LOCALIDADES DE "X" PROVINCIA
+
+SELECT Localidades.Nombre_Loc AS Localidad FROM Localidades
+INNER JOIN Provincias ON Localidades.IdProv_Loc = Provincias.Id_Prov
+WHERE Provincias.Nombre_Prov = 'Buenos Aires'
+GO
+
+-- OBTENER VENTAS DE USUARIO POR NOMBRE DEL USUARIO
+
+SELECT UPPER(Nombre_Art) AS Articulo, Cantidad_Detalle AS Cantidad, Fecha_Vent AS Fecha ,PrecioArt_Detalle AS Precio
+FROM Ventas INNER JOIN Detalle_Ventas ON Ventas.Nro_Vent = Detalle_Ventas.NroVent_Detalle
+INNER JOIN Articulos ON Detalle_Ventas.IdArt_Detalle = Articulos.Id_Art
+WHERE Ventas.Nombre_Vent = 'Maria'
+GO
+
+-- FILTRAR ARTICULOS POR PRECIO MAYOR O IGUAL A
+
+SELECT Id_Art AS ID, Nombre_Art AS Nombre, Descripcion_Cat AS Categoria, Descripcion_Mat AS Material, 
+Descripcion_Art AS Descripcion, UrlImagen_Art AS Url, Stock_Art AS Stock, FechaIngreso_Art AS FechaDeIngreso, 
+PrecioUnitario_Art AS PrecioUnitario, 
+Estado_Art AS Estado
+FROM Articulos
+INNER JOIN Materiales ON IdMat_Art = Id_Mat
+INNER JOIN Categorias ON IdCat_Art = Id_Cat
+WHERE PrecioUnitario_Art >= 10000
+GO
+
+-- OBTENER EL DNI DEL USUARIO Y CANTIDAD DE ARTICULOS DEL USUARIO QUE COMPRO MAS ARTICULOS
+
+SELECT TOP(1)Ventas.DniUsuario_Vent, 
+COUNT(Detalle_Ventas.IdArt_Detalle) AS Articulos
+FROM Ventas 
+INNER JOIN Detalle_Ventas ON Ventas.Nro_Vent = Detalle_Ventas.NroVent_Detalle
+GROUP BY Ventas.DniUsuario_Vent
+ORDER BY Articulos DESC
+GO

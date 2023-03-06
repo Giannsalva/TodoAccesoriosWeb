@@ -1,0 +1,174 @@
+CREATE DATABASE TodoAccesoriosBD
+GO
+
+USE TodoAccesoriosBD
+GO
+
+CREATE DATABASE TodoAccesoriosBD
+GO
+
+USE TodoAccesoriosBD
+GO
+CREATE TABLE Categorias
+(
+Id_Cat char(8) NOT NULL,
+Descripcion_Cat varchar(30) NOT NULL,
+CONSTRAINT PK_CATEGORIAS PRIMARY KEY (Id_Cat)
+)
+
+CREATE TABLE Materiales
+(
+Id_Mat char(8) NOT NULL,
+Descripcion_Mat  varchar(30) NOT NULL,
+CONSTRAINT PK_MATERIALES PRIMARY KEY (Id_Mat)
+)
+
+CREATE TABLE Provincias
+(
+Id_Prov char(8) NOT NULL,
+Nombre_Prov varchar(30) NOT NULL,
+CONSTRAINT PK_PROVINCIAS PRIMARY KEY (Id_Prov)
+)
+
+CREATE TABLE Localidades
+(
+IdProv_Loc char(8) NOT NULL,
+Id_Loc char(8) NOT NULL,
+Nombre_Loc  varchar(30) NOT NULL,
+CONSTRAINT PK_LOCALIDADES PRIMARY KEY (Id_Loc, IdProv_Loc),
+CONSTRAINT FK_lOCALIDADES_PROVINCIAS FOREIGN KEY (IdProv_Loc) 
+REFERENCES Provincias (Id_Prov)
+)
+
+CREATE TABLE TipoEnvio
+(
+Id_TEnvio char(8) NOT NULL,
+Descripcion_TEnvio char(30) NOT NULL,
+CONSTRAINT PK_TIPOENVIO PRIMARY KEY (Id_TEnvio)
+)
+
+CREATE TABLE TipoPago
+(
+Id_TPago char(8) NOT NULL,
+Descripcion_TPago char(30) NOT NULL,
+CONSTRAINT PK_TIPOPAGO PRIMARY KEY (Id_TPago)
+)
+
+CREATE TABLE Usuarios
+(
+DNI_Us char(8) NOT NULL,
+Usuario_Us varchar(30) NOT NULL,
+Email_Us varchar(60) NOT NULL,
+IdProv_Us char(8) NOT NULL,
+IdLoc_Us char(8) NOT NULL,
+Domicilio_Us varchar(40) NOT NULL,
+Departamento_Us varchar(10) NOT NULL DEFAULT 'NO',
+Contraseña_Us varchar(30) NOT NULL,
+Telefono_Us char(10) NOT NULL,
+Nombre_Us char(30) NOT NULL,
+Apellido_Us char(30) NOT NULL,
+UrlImagen_Us varchar(60) NOT NULL DEFAULT N'Imagenes/Usuarios/user-default',
+FechaNac_Us date NOT NULL,
+Tipo_Us Int NOT NULL default 1,
+Estado bit NOT NULL default 1,
+CONSTRAINT PK_USUARIOS PRIMARY KEY (DNI_Us),
+CONSTRAINT UK_USUARIOS UNIQUE (Usuario_Us,Email_Us),
+CONSTRAINT FK_USUARIOS_LOCALIDADES FOREIGN KEY (IdLoc_Us, IdProv_Us) 
+REFERENCES LOCALIDADES (Id_Loc, IdProv_Loc)
+)
+
+CREATE TABLE Articulos
+(
+Id_Art char(8) NOT NULL,
+IdCat_Art char(8) NOT NULL,
+IdMat_Art char(8) NOT NULL,
+Nombre_Art varchar(20) NOT NULL,
+Descripcion_Art varchar(100) NOT NULL,
+UrlImagen_Art varchar(60) NOT NULL,
+Stock_Art int NOT NULL DEFAULT 0,
+FechaIngreso_Art date NOT NULL,
+PrecioUnitario_Art decimal(10,2) NOT NULL DEFAULT 0.00,
+Estado_Art bit NOT NULL,
+CONSTRAINT PK_ARTICULOS PRIMARY KEY (Id_Art),
+CONSTRAINT FK_ARTICULOS_CATEGORIAS FOREIGN KEY (IdCat_Art) 
+REFERENCES Categorias (Id_Cat),
+CONSTRAINT FK_ARTICULOS_MATERIALES FOREIGN KEY (IdMat_Art) 
+REFERENCES Materiales (Id_Mat)
+)
+
+CREATE TABLE Ventas
+(
+Nro_Vent int NOT NULL IDENTITY (1,1),
+DniUsuario_Vent char(8) NOT NULL,
+IdTipoEnvio_Vent char(8) NOT NULL,
+IdLoc_Vent char(8) NOT NULL,
+IdProvLoc_Vent char(8) NOT NULL,
+IdTipoPago_Vent char(8) NOT NULL,
+Usuario_Vent varchar(30) NOT NULL,
+EmailUsuario_Vent varchar(60) NOT NULL,
+DireccionUs_Vent varchar(40) NOT NULL,
+TelefonoUsuario_Vent char(10) NOT NULL,
+Total_Vent decimal(8,2) NOT NULL,
+Fecha_Vent date NOT NULL,
+Nombre_Vent varchar(60) NOT NULL,
+Apellido_Vent varchar(60) NOT NULL,
+Departamento_Vent varchar(40) NOT NULL DEFAULT 'Sin departamento',
+Barrio_Vent varchar(40) NOT NULL DEFAULT 'Sin barrio',
+CodPostal_Vent int NOT NULL, 
+
+CONSTRAINT PK_VENTAS PRIMARY KEY (Nro_Vent),
+CONSTRAINT FK_VENTAS_USUARIOS FOREIGN KEY (DniUsuario_Vent)
+REFERENCES Usuarios (DNI_Us),
+CONSTRAINT FK_VENTAS_TIPOENVIO FOREIGN KEY (IdTipoEnvio_Vent)
+REFERENCES TipoEnvio (Id_TEnvio),
+CONSTRAINT FK_VENTAS_LOCALIDADES FOREIGN KEY (IdLoc_Vent, IdProvLoc_Vent) 
+REFERENCES LOCALIDADES (Id_Loc, IdProv_Loc),
+CONSTRAINT FK_VENTAS_TIPOPAGO FOREIGN KEY (IdTipoPago_Vent)
+REFERENCES TipoPago (Id_TPago)
+)
+
+CREATE TABLE Detalle_Ventas
+(
+NroVent_Detalle int NOT NULL,
+IdArt_Detalle char(8) NOT NULL,
+Cantidad_Detalle  int NOT NULL,
+PrecioArt_Detalle  decimal(8,2) NOT NULL,
+CONSTRAINT PK_DETALLEVENTAS PRIMARY KEY (NroVent_Detalle, IdArt_Detalle),
+CONSTRAINT FK_DETALLEVENTAS_VENTAS FOREIGN KEY (NroVent_Detalle) 
+REFERENCES Ventas (Nro_Vent),
+CONSTRAINT FK_DETALLEVENTAS_ARTICULOS FOREIGN KEY (IdArt_Detalle) 
+REFERENCES Articulos (Id_Art)
+)
+
+
+CREATE TABLE Historial_Estado_Articulos
+(
+Id_Elim_HE INT IDENTITY (1,1)NOT NULL,
+Id_Art_HE char(8) NOT NULL, 
+Fecha_HE datetime NOT NULL,
+Estado_HE bit NOT NULL,
+CONSTRAINT PK_Estado PRIMARY KEY (Id_Elim_HE)
+)
+GO
+
+CREATE TABLE Log_Ventas
+(
+Id_LogVenta_LV INT IDENTITY (1,1)NOT NULL,
+Id_Nro_Vent_LV char(8) NOT NULL, 
+Fecha_LV datetime NOT NULL,
+Motivo_LV char(30) NOT NULL,
+CONSTRAINT PK_LogVenta PRIMARY KEY (Id_LogVenta_LV)
+)
+GO
+
+CREATE TABLE Log_Articulos
+(
+Id_LogArticulo_LA INT IDENTITY (1,1)NOT NULL,
+Id_Art_LA char(8) NOT NULL, 
+Fecha_LA datetime NOT NULL,
+Motivo_LA char(30) NOT NULL,
+CONSTRAINT PK_LogArticulo PRIMARY KEY (Id_LogArticulo_LA)
+)
+GO
+
+
